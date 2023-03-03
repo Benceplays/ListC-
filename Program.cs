@@ -140,7 +140,7 @@ namespace listarendezes
                 else {System.Console.WriteLine("Nem ment bele egyikbe se!");}
             }
             for (int i = 0; i < x.Length; i++) { if (!ContainsOfMatrix(abc, x[i])) { return_value = 1; break; }}
-            for (int i = 0; i < y.Length; i++) { if (ContainsOfMatrix(abc, y[i])) { return_value = -1; break; }}
+            for (int i = 0; i < y.Length; i++) { if (!ContainsOfMatrix(abc, y[i])) { return_value = -1; break; }}
             return return_value;
         }
     }
