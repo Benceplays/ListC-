@@ -65,44 +65,6 @@ namespace listarendezes
 
     //-----------------------------------------------------------------------------------------------------
 
-    public class RndString
-    {
-        public List<string> Szavak = new List<string>();
-        string charabc = "aAáÁbBcCdDeEéÉfFgGhHiIíÍjJkKlLmMnNoOóÓöÖőŐpPqQrRsStTuUúÚüÜűŰvVwWxXyYzZ0123456789";
-        string charstock = "aAáÁbBcCdDeEéÉfFgGhHiIíÍjJkKlLmMnNoOóÓöÖőŐpPqQrRsStTuUúÚüÜűŰvVwWxXyYzZ0123456789,.- §+!%/=()?:_~ˇ^˘°˛`˙´˝¨¸|Ä€÷×¤äđĐ[]łŁ$ß>#&@{}<;>*";
-        string word = "";
-        string inchecked = "";
-        Random rnd = new Random();
-        public RndString(int wordnumber, int vocablenumber, int type)
-        {
-            Generator(wordnumber, vocablenumber, type);
-        }
-        public void Generator(int wordnumber, int vocablenumber, int type)
-        {
-            switch (type)
-            {
-                case 0:
-                    inchecked = charabc;
-                    break;
-                case 1:
-                    inchecked = charstock;
-                    break;
-                default:
-                    inchecked = charstock;
-                    break;
-            }
-            for (int i = 0; i < vocablenumber; i++)
-            {
-                for (int j = 0; j < wordnumber; j++) { word += inchecked[rnd.Next(0, inchecked.Length)]; }
-                Szavak.Add(word);
-                word = "";
-            }
-        }
-    }
-
-
-
-    //-----------------------------------------------------------------------------------------------------
     class Rendezo : IComparer<string>
     {
         public int Compare(string x, string y)
@@ -189,53 +151,67 @@ namespace listarendezes
         private int szoszam = 10;
         public Tanulmany()
         {
-            System.Console.WriteLine("Kérlek add meg, hogy a beépített, az első saját megoldással vagy a második saját megoldással írja ki. (0 / 1 / 2)");
-            string comparetype = Console.ReadLine();
-            System.Console.WriteLine("Kérlek add meg, hogy az alap listát használja, a tanárúr álltal írt lista generálót, vagy a saját lista generálót. (0 / 1 / 2)");
-            string listtype = Console.ReadLine();
-            RndString generatedlist = new RndString(10, 20, 0);
-            TesztAdat generatedlistt = new TesztAdat(10, 20);
-            List<string> szavak = new List<string>()
-                {"farok", "Fanni", "zebra", "Zita", "álom", "alom", "köcsög", "12asd", "asd123asdf", "kő", "olló", "elvarázsolt",
-                 "éles", "Éva", "Edina", "Elemér"};
-            switch (listtype)
+            bool run = true;
+            while (run)
             {
-                case "1":
-                    szavak = generatedlistt.Szavak;
-                    break;
-                case "2":
-                    szavak = generatedlist.Szavak;
-                    break;
-                default:
-                    break;
-            }
-            //szavak.ForEach(szo => Console.Write($"{szo} "));
-            Console.WriteLine(string.Join(" ", szavak));
-            //generatedlist.Szavak.ForEach(i => Console.Write("{0}\n", i));
+                System.Console.WriteLine("Kérlek add meg, hogy a beépített, az első saját megoldással vagy a második saját megoldással írja ki. (0 / 1 / 2)");
+                string comparetype = Console.ReadLine();
+                System.Console.WriteLine("Kérlek add meg, hogy az alap listát használja vagy a tanárúr álltal írt lista generálót. (0 / 1)");
+                string listtype = Console.ReadLine();
+                TesztAdat generatedlistt = new TesztAdat(10, 20);
+                List<string> szavak = new List<string>()
+                    {"farok", "Fanni", "zebra", "Zita", "álom", "alom", "köcsög", "12asd", "asd123asdf", "kő", "olló", "elvarázsolt",
+                    "éles", "Éva", "Edina", "Elemér"};
+                switch (listtype)
+                {
+                    case "1":
+                        szavak = generatedlistt.Szavak;
+                        break;
+                    default:
+                        break;
+                }
+                //szavak.ForEach(szo => Console.Write($"{szo} "));
+                Console.WriteLine(string.Join(" ", szavak));
+                //generatedlist.Szavak.ForEach(i => Console.Write("{0}\n", i));
 
-            //szavak.Sort();
-            //Console.WriteLine(string.Join(" ", szavak));
+                //szavak.Sort();
+                //Console.WriteLine(string.Join(" ", szavak));
 
-            //szavak.Sort((a, b) => a.CompareTo(b));
-            //szavak.Sort((a, b) => a.Length.CompareTo(b.Length));
-            //szavak.Sort((a, b) => -1);
-            switch (comparetype)
-            {
-                case "0":
-                    szavak.Sort(new Rendezo());
-                    break;
-                case "1":
-                    szavak.Sort(new RendezoAbc());
-                    break;
-                case "2":
-                    szavak.Sort(new RendezoAbcEgyezok());
-                    break;
-                default:
-                    szavak.Sort(new RendezoAbcEgyezok());
-                    break;
+                //szavak.Sort((a, b) => a.CompareTo(b));
+                //szavak.Sort((a, b) => a.Length.CompareTo(b.Length));
+                //szavak.Sort((a, b) => -1);
+                switch (comparetype)
+                {
+                    case "0":
+                        szavak.Sort(new Rendezo());
+                        break;
+                    case "1":
+                        szavak.Sort(new RendezoAbc());
+                        break;
+                    case "2":
+                        szavak.Sort(new RendezoAbcEgyezok());
+                        break;
+                    default:
+                        szavak.Sort(new RendezoAbcEgyezok());
+                        break;
+                }
+                System.Console.WriteLine('\n' + "A formázott szöveg: ");
+                Console.WriteLine(string.Join(" ", szavak));
+                System.Console.WriteLine("Folytatod? (0 / 1)");
+                string conti = Console.ReadLine();
+                switch (conti)
+                {
+                    case "0":
+                        run = false;
+                        break;
+                    case "1":
+                        break;
+                    default:
+                        System.Console.WriteLine("Valid értéket adj meg.");
+                        run = false;
+                        continue;
+                }
             }
-            System.Console.WriteLine('\n' + "A formázott szöveg: ");
-            Console.WriteLine(string.Join(" ", szavak));
         }
     }
     internal class Program
