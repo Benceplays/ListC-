@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bence\\Desktop\\List\\List.csproj",
+      "projectUniqueName": "C:\\Users\\Bence\\Documents\\GitHub\\ListC-\\List.csproj",
       "projectName": "List",
-      "projectPath": "C:\\Users\\Bence\\Desktop\\List\\List.csproj",
+      "projectPath": "C:\\Users\\Bence\\Documents\\GitHub\\ListC-\\List.csproj",
       "packagesPath": "C:\\Users\\Bence\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bence\\Desktop\\List\\obj\\",
+      "outputPath": "C:\\Users\\Bence\\Documents\\GitHub\\ListC-\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
