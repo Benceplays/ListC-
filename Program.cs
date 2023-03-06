@@ -82,13 +82,17 @@ namespace listarendezes
             //A nem felsorolt karaktereket a végére vagy az elejére teszi (pl.: a számjegyek a végére kerülnek).
             int return_value = 0;
             int maxlength;
-            if (x == y) { return_value = 0; }
-            if (y.Length < x.Length) { maxlength = x.Length; } else { maxlength = y.Length; }
+            if (x == y) return_value = 0; 
+            if (y.Length < x.Length) maxlength = x.Length; else maxlength = y.Length;
             for (int i = 0; i < maxlength; i++)
             {
                 //Az comment alatti két sor akkor kell hogyha a betűvel kezdődő de számot tartalmazó szó az abc szerinti helyére kell h kerüljön. Ha a két sort alul aktiváljuk akkor ez  ne maradjon bent.
-
-                if (!(abc.Contains(x[i]))) { return_value = 1; break; }
+                if(!(abc.Contains(x[i])) && !(abc.Contains(y[i]))){ 
+                    if((int)x[i] < (int)y[i]) return -1; 
+                    else if((int)x[i] > (int)y[i]) return 1; 
+                    else return 0; 
+                }
+                else if (!(abc.Contains(x[i]))) { return_value = 1; break; }
                 else if (!(abc.Contains(y[i]))) { return_value = -1; break; }
                 else if (abc.IndexOf(x[i]) < abc.IndexOf(y[i])) { return_value = -1; break; }
                 else if (abc.IndexOf(x[i]) == abc.IndexOf(y[i])) { return_value = 0; break; }
@@ -96,9 +100,8 @@ namespace listarendezes
                 else { Console.WriteLine("Valami baj történt, mert egyik se futott le."); }
             }
             //Az alábbi két sor akkor kell hogyha a betűvel kezdődő de számot tartalmazó szó a végére kell h kerüljön.
-            for (int i = 0; i < x.Length; i++) { if (!(abc.Contains(x[i]))) { return_value = 1; break; }}
-            for (int i = 0; i < y.Length; i++) { if (!(abc.Contains(y[i]))) { return_value = -1; break; }}
-
+            for (int i = 0; i < x.Length; i++) { if (!(abc.Contains(x[i]))) return_value = 1; break; }
+            for (int i = 0; i < y.Length; i++) { if (!(abc.Contains(y[i]))) return_value = -1; break; }
             return return_value;
         }
     }
@@ -113,7 +116,7 @@ namespace listarendezes
             Vector2 return_value = new Vector2(999, 999);
             for (int j = 0; j < 4; j++)
             {
-                for (int i = 0; i < array.Length / 4; i++){ if (array[j, i] == x) { return_value =  new Vector2(i, j); }} //{return_value = (array[j, i] == x ? new Vector2(i, j) : new Vector2(999, 999));}
+                for (int i = 0; i < array.Length / 4; i++){ if (array[j, i] == x) return_value =  new Vector2(i, j);} //{return_value = (array[j, i] == x ? new Vector2(i, j) : new Vector2(999, 999));}
             }
             return return_value;
         }
@@ -132,11 +135,15 @@ namespace listarendezes
             //és a megadott (egymás fölött lévő) azonos betűket nem különbözteti meg.
             //A nem felsorolt karaktereket kihagyja a rendezésből (pl.: a szóköz nem számít).
             //Mukodes megfejtese console.writeline("list"("sorban", "oszlopban"))
-            if (y.Length < x.Length) { maxlength = x.Length; } else { maxlength = y.Length; }
+            string tempx = "";
+            string tempy = "";
+            foreach (var item in x) { if(ContainsOfMatrix(abc, item)){ tempx += item; }}
+            foreach (var item in y) { if(ContainsOfMatrix(abc, item)){ tempy += item; }}
+            if (tempy.Length < tempx.Length) { maxlength = tempy.Length; } else { maxlength = tempx.Length; }
             for (int i = 0; i < maxlength; i++)
-            {
-                Vector2 xpos = IndexOfMatrix(abc, x[i]);
-                Vector2 ypos = IndexOfMatrix(abc, y[i]);
+            {                
+                Vector2 xpos = IndexOfMatrix(abc, tempx[i]);
+                Vector2 ypos = IndexOfMatrix(abc, tempy[i]);
                 if (xpos.X < ypos.X){ return_value = -1; break; }
                 else if (xpos.X > ypos.X){ return_value = 1; break; }
                 else if (xpos.X == ypos.X){ return_value = 0; break; }
@@ -152,11 +159,10 @@ namespace listarendezes
         private int szoszam = 10;
         public Tanulmany()
         {
-            bool run = true;
                 TesztAdat generatedlistt = new TesztAdat(10, 20);
                 List<string> szavak = new List<string>()
-                    {"farok", "Fanni", "zebra", "Zita", "álom", "alom", "köcsög", "12asd", "asd123asdf", "kő", "olló", "elvarázsolt",
-                    "éles", "Éva", "Edina", "Elemér"};
+                    {"farok", "Fanni", "zebra", "Zita", "álom", "alom", "köcsög", "kő", "olló", "elvarázsolt",
+                    "éles", "Éva", "Edina", "Elemér", "12", "&", "13", "&1"};
 
                 //szavak = generatedlistt.Szavak;
 
@@ -171,7 +177,7 @@ namespace listarendezes
                 //szavak.Sort((a, b) => a.Length.CompareTo(b.Length));
                 //szavak.Sort((a, b) => -1);
 
-                szavak.Sort(new RendezoAbc());
+                szavak.Sort(new RendezoAbcEgyezok());
                 System.Console.WriteLine('\n' + "A formázott szöveg: ");
                 Console.WriteLine(string.Join(" ", szavak));
         }
