@@ -87,6 +87,7 @@ namespace listarendezes
             for (int i = 0; i < maxlength; i++)
             {
                 //Az comment alatti két sor akkor kell hogyha a betűvel kezdődő de számot tartalmazó szó az abc szerinti helyére kell h kerüljön. Ha a két sort alul aktiváljuk akkor ez  ne maradjon bent.
+
                 if (!(abc.Contains(x[i]))) { return_value = 1; break; }
                 else if (!(abc.Contains(y[i]))) { return_value = -1; break; }
                 else if (abc.IndexOf(x[i]) < abc.IndexOf(y[i])) { return_value = -1; break; }
@@ -152,24 +153,13 @@ namespace listarendezes
         public Tanulmany()
         {
             bool run = true;
-            while (run)
-            {
-                System.Console.WriteLine("Kérlek add meg, hogy a beépített, az első saját megoldással vagy a második saját megoldással írja ki. (0 / 1 / 2)");
-                string comparetype = Console.ReadLine();
-                System.Console.WriteLine("Kérlek add meg, hogy az alap listát használja vagy a tanárúr álltal írt lista generálót. (0 / 1)");
-                string listtype = Console.ReadLine();
                 TesztAdat generatedlistt = new TesztAdat(10, 20);
                 List<string> szavak = new List<string>()
                     {"farok", "Fanni", "zebra", "Zita", "álom", "alom", "köcsög", "12asd", "asd123asdf", "kő", "olló", "elvarázsolt",
                     "éles", "Éva", "Edina", "Elemér"};
-                switch (listtype)
-                {
-                    case "1":
-                        szavak = generatedlistt.Szavak;
-                        break;
-                    default:
-                        break;
-                }
+
+                //szavak = generatedlistt.Szavak;
+
                 //szavak.ForEach(szo => Console.Write($"{szo} "));
                 Console.WriteLine(string.Join(" ", szavak));
                 //generatedlist.Szavak.ForEach(i => Console.Write("{0}\n", i));
@@ -180,38 +170,10 @@ namespace listarendezes
                 //szavak.Sort((a, b) => a.CompareTo(b));
                 //szavak.Sort((a, b) => a.Length.CompareTo(b.Length));
                 //szavak.Sort((a, b) => -1);
-                switch (comparetype)
-                {
-                    case "0":
-                        szavak.Sort(new Rendezo());
-                        break;
-                    case "1":
-                        szavak.Sort(new RendezoAbc());
-                        break;
-                    case "2":
-                        szavak.Sort(new RendezoAbcEgyezok());
-                        break;
-                    default:
-                        szavak.Sort(new RendezoAbcEgyezok());
-                        break;
-                }
+
+                szavak.Sort(new RendezoAbc());
                 System.Console.WriteLine('\n' + "A formázott szöveg: ");
                 Console.WriteLine(string.Join(" ", szavak));
-                System.Console.WriteLine("Folytatod? (0 / 1)");
-                string conti = Console.ReadLine();
-                switch (conti)
-                {
-                    case "0":
-                        run = false;
-                        break;
-                    case "1":
-                        break;
-                    default:
-                        System.Console.WriteLine("Valid értéket adj meg.");
-                        run = false;
-                        continue;
-                }
-            }
         }
     }
     internal class Program
