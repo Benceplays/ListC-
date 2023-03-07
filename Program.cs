@@ -149,8 +149,8 @@ namespace listarendezes
                 else if (xpos.X == ypos.X){ return_value = 0; break; }
                 else {System.Console.WriteLine("Nem ment bele egyikbe se!");}
             }
-            for (int i = 0; i < x.Length; i++) { if (!ContainsOfMatrix(abc, x[i])) { return_value = 1; break; }}
-            for (int i = 0; i < y.Length; i++) { if (!ContainsOfMatrix(abc, y[i])) { return_value = -1; break; }}
+            for (int i = 0; i < tempx.Length; i++) { if (!ContainsOfMatrix(abc, tempx[i])) { return_value = 1; break; }}
+            for (int i = 0; i < tempy.Length; i++) { if (!ContainsOfMatrix(abc, tempy[i])) { return_value = -1; break; }}
             return return_value;
         }
     }
