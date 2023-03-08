@@ -146,7 +146,9 @@ namespace listarendezes
                 Vector2 ypos = IndexOfMatrix(abc, tempy[i]);
                 if (xpos.X < ypos.X){ return_value = -1; break; }
                 else if (xpos.X > ypos.X){ return_value = 1; break; }
-                else if (xpos.X == ypos.X){ return_value = 0; break; }
+                else if (xpos.X == ypos.X && xpos.Y == ypos.Y){ return_value = 0; break; }
+                else if (xpos.X == ypos.X && xpos.Y < ypos.Y){ return_value = -1; break; }
+                else if (xpos.X == ypos.X && xpos.Y > ypos.Y){ return_value = 1; break; }
                 else {System.Console.WriteLine("Nem ment bele egyikbe se!");}
             }
             for (int i = 0; i < tempx.Length; i++) { if (!ContainsOfMatrix(abc, tempx[i])) { return_value = 1; break; }}
@@ -164,7 +166,7 @@ namespace listarendezes
                     {"farok", "Fanni", "zebra", "Zita", "álom", "alom", "köcsög", "kő", "olló", "elvarázsolt",
                     "éles", "Éva", "Edina", "Elemér", "12", "&", "13", "&1"};
 
-                //szavak = generatedlistt.Szavak;
+                szavak = generatedlistt.Szavak;
 
                 //szavak.ForEach(szo => Console.Write($"{szo} "));
                 Console.WriteLine(string.Join(" ", szavak));

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nemeth.csaba_csany-z\\Documents\\GitHub\\ListC-\\List.csproj": {}
+    "C:\\Users\\Bence\\Documents\\GitHub\\ListC-\\List.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nemeth.csaba_csany-z\\Documents\\GitHub\\ListC-\\List.csproj": {
+    "C:\\Users\\Bence\\Documents\\GitHub\\ListC-\\List.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nemeth.csaba_csany-z\\Documents\\GitHub\\ListC-\\List.csproj",
+        "projectUniqueName": "C:\\Users\\Bence\\Documents\\GitHub\\ListC-\\List.csproj",
         "projectName": "List",
-        "projectPath": "C:\\Users\\nemeth.csaba_csany-z\\Documents\\GitHub\\ListC-\\List.csproj",
-        "packagesPath": "C:\\Users\\nemeth.csaba_csany-z\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nemeth.csaba_csany-z\\Documents\\GitHub\\ListC-\\obj\\",
+        "projectPath": "C:\\Users\\Bence\\Documents\\GitHub\\ListC-\\List.csproj",
+        "packagesPath": "C:\\Users\\Bence\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bence\\Documents\\GitHub\\ListC-\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\nemeth.csaba_csany-z\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bence\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -60,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
