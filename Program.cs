@@ -163,21 +163,11 @@ namespace listarendezes
                     {"farok", "Fanni", "zebra", "Zita", "álom", "alom", "köcsög", "kő", "olló", "elvarázsolt",
                     "éles", "Éva", "Edina", "Elemér", "12", "&", "13", "&1"};
 
+                //itt dől el hogy a saját vagy a generált lista legyen
                 //szavak = generatedlistt.Szavak;
 
-                //szavak.ForEach(szo => Console.Write($"{szo} "));
                 Console.WriteLine(string.Join(" ", szavak));
-                //generatedlist.Szavak.ForEach(i => Console.Write("{0}\n", i));
-
-                //szavak.Sort();
-                //Console.WriteLine(string.Join(" ", szavak));
-
-                //szavak.Sort((a, b) => a.CompareTo(b));
-                //szavak.Sort((a, b) => a.Length.CompareTo(b.Length));
-                //szavak.Sort((a, b) => -1);
-
                 szavak.Sort(new RendezoAbc());
-                
                 System.Console.WriteLine('\n' + "A formázott szöveg: ");
                 Console.WriteLine(string.Join(" ", szavak));
         }
